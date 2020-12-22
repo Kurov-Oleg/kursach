@@ -11,7 +11,7 @@ public class ToDo {
     }
 
     public HashMap<String,Point> readDo(String name) throws FileNotFoundException {
-        Scanner scanner = new Scanner(new File("/home/zgymko/IdeaProjects/lab15/src/main/resources/"+name+".txt"));
+        Scanner scanner = new Scanner(new File(System.getProperty("user.dir")+"/"+name+".txt"));
         HashMap<String,Point>list = new HashMap<String,Point>();
             while (scanner.hasNext()) {
                 String str;
@@ -37,7 +37,7 @@ public class ToDo {
     }
 
     public void addDo(String name,String finalDate,String task,String topic,String status) throws IOException {
-        Scanner scanner = new Scanner(new File(System.getProperty("user.dir")+name+".txt"));
+        Scanner scanner = new Scanner(new File(System.getProperty("user.dir")+"/"+name+".txt"));
         HashMap<String,Point> list = readDo(name);
         Point point = new Point();
         SimpleDateFormat formatForDateNow = new SimpleDateFormat(" dd.MM.yyyy ");
@@ -49,7 +49,7 @@ public class ToDo {
         point.setStatus(status);
         topic=topic.trim();
         list.put(topic,point);
-        Files.write(Paths.get(System.getProperty("user.dir")+name+".txt"),
+        Files.write(Paths.get(System.getProperty("user.dir")+"/"+name+".txt"),
                 list.entrySet().stream().map(k->k.getKey()+"\n"+
                         k.getValue().getDate()+"\n"+
                         k.getValue().getFinalDate()+"\n"+
@@ -90,7 +90,7 @@ public class ToDo {
         }
         list.remove(topic);
         list.put(topic,point);
-        Files.write(Paths.get(System.getProperty("user.dir")+name+".txt"),
+        Files.write(Paths.get(System.getProperty("user.dir")+"/"+name+".txt"),
                 list.entrySet().stream().map(k->k.getKey()+"\n"+
                         k.getValue().getDate()+"\n"+
                         k.getValue().getFinalDate()+"\n"+
@@ -114,14 +114,5 @@ public class ToDo {
             }
         }
         return str.toString();
-    }
-
-    public Boolean hasTopic(String name,String topic) throws FileNotFoundException {
-        HashMap<String,Point> list = readDo(name);
-        if(list.containsKey(topic)) {
-            return true;
-        } else {
-            return false;
-        }
     }
 }

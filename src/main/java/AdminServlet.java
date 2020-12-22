@@ -9,19 +9,18 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 public class AdminServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
         HttpSession session = request.getSession();
         String admin = (String) session.getAttribute("name");
         if( admin.equals("admin")) {
             String name = request.getParameter("user");
-            Credential logi = new Credential();
-            logi.delete(name);
+            Credential credential = new Credential();
+            credential.delete(name);
             Files.write(Paths.get(System.getProperty("user.dir")+"/Credential.txt"),
-                    logi.getBook().entrySet().stream().map(k->k.getKey()+" "+k.getValue()).collect(Collectors.toList()),
+                    credential.getBook().entrySet().stream().map(k->k.getKey()+" "+k.getValue()).collect(Collectors.toList()),
                     StandardCharsets.UTF_8);
-            File file = new File(System.getProperty("user.dir")+name+".txt");
+            File file = new File(System.getProperty("user.dir")+"/"+name+".txt");
             file.delete();
         }
         response.sendRedirect("/MainServlet");
