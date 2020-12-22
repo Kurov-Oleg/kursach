@@ -1,6 +1,4 @@
-package SignIn;
-
-import SignIn.Credential;
+package controller.signIn;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

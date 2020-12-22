@@ -1,3 +1,7 @@
+package controller.work;
+
+import models.ToDo;
+
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -5,7 +9,7 @@ import javax.servlet.http.*;
 public class MainServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         File f = new File("Credential.txt");
-        if ( !f.exists() ) {
+        if (!f.exists()) {
             f.createNewFile();
         }
         response.setContentType("text/html");
@@ -13,7 +17,7 @@ public class MainServlet extends HttpServlet {
         out.println("<!DOCTYPE html>");
         out.println("<html> <head> <link rel = \"stylesheet\" href = \"style.css\"> </head> <body>");
         HttpSession session = request.getSession();
-        if (session.getAttribute("name") != null){
+        if (session.getAttribute("name") != null) {
             if (session.getAttribute("name").equals("admin")) {
                 request.getRequestDispatcher("linksa.html").include(request, response);
             } else {

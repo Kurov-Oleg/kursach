@@ -4,17 +4,17 @@
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
 
     <servlet>
-        <servlet-name>SignIn.LoginServlet</servlet-name>
-        <servlet-class>SignIn.LoginServlet</servlet-class>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>controller.signIn.LoginServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>SignIn.LoginServlet</servlet-name>
-        <url-pattern>/SignIn.LoginServlet</url-pattern>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
     </servlet-mapping>
 
     <servlet>
         <servlet-name>MainServlet</servlet-name>
-        <servlet-class>MainServlet</servlet-class>
+        <servlet-class>controller.work.MainServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>MainServlet</servlet-name>
@@ -22,17 +22,17 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>SignIn.LogoutServlet</servlet-name>
-        <servlet-class>SignIn.LogoutServlet</servlet-class>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>controller.signIn.LogoutServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>SignIn.LogoutServlet</servlet-name>
-        <url-pattern>/SignIn.LogoutServlet</url-pattern>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/LogoutServlet</url-pattern>
     </servlet-mapping>
 
     <servlet>
         <servlet-name>AddServlet</servlet-name>
-        <servlet-class>AddServlet</servlet-class>
+        <servlet-class>controller.work.AddServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AddServlet</servlet-name>
@@ -40,7 +40,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
     </servlet-mapping>
     <servlet>
         <servlet-name>AdminServlet</servlet-name>
-        <servlet-class>AdminServlet</servlet-class>
+        <servlet-class>controller.work.AdminServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AdminServlet</servlet-name>
@@ -49,18 +49,18 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
 
 
     <servlet>
-        <servlet-name>SignIn.RegistryServlet</servlet-name>
-        <servlet-class>SignIn.RegistryServlet</servlet-class>
+        <servlet-name>RegistryServlet</servlet-name>
+        <servlet-class>controller.signIn.RegistryServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>SignIn.RegistryServlet</servlet-name>
-        <url-pattern>/SignIn.RegistryServlet</url-pattern>
+        <servlet-name>RegistryServlet</servlet-name>
+        <url-pattern>/RegistryServlet</url-pattern>
     </servlet-mapping>
 
 
     <servlet>
         <servlet-name>DoneServlet</servlet-name>
-        <servlet-class>DoneServlet</servlet-class>
+        <servlet-class>controller.work.DoneServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>DoneServlet</servlet-name>

@@ -1,3 +1,5 @@
+package models;
+
 public class Point {
     private String date;
     private String finalDate;

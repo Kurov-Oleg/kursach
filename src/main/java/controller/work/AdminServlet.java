@@ -1,11 +1,12 @@
-import SignIn.Credential;
+package controller.work;
+
+import controller.signIn.Credential;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Collectors;
-import javax.servlet.*;
 import javax.servlet.http.*;
 
 public class AdminServlet extends HttpServlet {

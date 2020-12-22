@@ -1,3 +1,7 @@
+package models;
+
+import models.Point;
+
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -10,9 +14,11 @@ public class ToDo {
     public void ToDo() throws FileNotFoundException {
     }
 
-    public HashMap<String,Point> readDo(String name) throws FileNotFoundException {
-        Scanner scanner = new Scanner(new File(System.getProperty("user.dir") + "/" + name + ".txt"));
-        HashMap<String,Point>list = new HashMap<String,Point>();
+    public HashMap<String, Point> readDo(String name) throws FileNotFoundException {
+        File f = new File(name + ".txt");
+        if(f.exists()) {
+            Scanner scanner = new Scanner(new File(System.getProperty("user.dir") + "/" + name + ".txt"));
+            HashMap<String, Point> list = new HashMap<String, Point>();
             while (scanner.hasNext()) {
                 String str;
                 str = scanner.nextLine();
@@ -30,17 +36,18 @@ public class ToDo {
                 str = scanner.nextLine();
                 b = str.trim();
                 point.setDescription(b);
-                list.put(topic,point);
+                list.put(topic, point);
             }
 
-        return list;
+            return list;
+        }
+        return null;
     }
 
     public void addDo(String name,String finalDate,String task,String topic,String status) throws IOException {
-        Scanner scanner = new Scanner(new File(System.getProperty("user.dir") + "/" + name + ".txt"));
         HashMap<String,Point> list = readDo(name);
         Point point = new Point();
-        SimpleDateFormat formatForDateNow = new SimpleDateFormat(" dd.MM.yyyy ");
+        SimpleDateFormat formatForDateNow = new SimpleDateFormat("dd.MM.yyyy");
         Date dateNow = new Date();
         String date = formatForDateNow.format(dateNow);
         point.setFinalDate(finalDate);
@@ -56,8 +63,6 @@ public class ToDo {
                         k.getValue().getStatus() + "\n" +
                         k.getValue().getDescription()).collect(Collectors.toList()),
                 StandardCharsets.UTF_8);
-
-
     }
 
     public String checkIn(String name) throws FileNotFoundException {

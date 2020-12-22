@@ -1,6 +1,5 @@
-package SignIn;
+package controller.signIn;
 
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Credential {

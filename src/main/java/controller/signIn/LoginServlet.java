@@ -1,6 +1,4 @@
-package SignIn;
-
-import SignIn.Credential;
+package controller.signIn;
 
 import java.io.*;
 import java.util.Scanner;
