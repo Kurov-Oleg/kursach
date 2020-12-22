@@ -7,10 +7,10 @@ public class AddServlet extends HttpServlet {
         HttpSession session = request.getSession();
         ToDo book = new ToDo();
         String admin = (String) session.getAttribute("name");
-        String final_date = request.getParameter("final_date");
+        String finalDate = request.getParameter("final_date");
         String task = request.getParameter("task");
         String topic = request.getParameter("topic");
-        book.addDo(admin, final_date, task, topic, "in progress");
+        book.addDo(admin, finalDate, task, topic, "in progress");
         response.sendRedirect("/MainServlet");
     }
 }

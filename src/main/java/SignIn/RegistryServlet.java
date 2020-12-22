@@ -25,8 +25,8 @@ public class RegistryServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         Credential credential = new Credential();
         out.println("<!DOCTYPE html>");
-        out.println("<html><head><link rel=\"stylesheet\" href=\"style2.css\"></head><body>");
-        Scanner scanner = new Scanner(new File(System.getProperty("user.dir")+"/Credential.txt"));
+        out.println("<html> <head> <link rel = \"stylesheet\" href = \"style2.css\"> </head> <body>");
+        Scanner scanner = new Scanner(new File(System.getProperty("user.dir") + "/Credential.txt"));
         if (credential.isFirst()) {
             while (scanner.hasNext()) {
                 String line = scanner.next();
@@ -36,20 +36,18 @@ public class RegistryServlet extends HttpServlet {
         }
         if (credential.check (name)) {
             out.print("<h1>Sorry, name is already use</h1>");
-            out.println("</body></html>");
+            out.println("</body> </html>");
             request.getRequestDispatcher("login.html").include(request, response);
         } else {
             credential.add (name, password);
             out.print("<h1>successfully added </h1>");
-            out.println("</body></html>");
+            out.println("</body> </html>");
             HttpSession session = request.getSession();
-            Files.write(Paths.get(System.getProperty("user.dir")+"/Credential.txt"),
-                    credential.getBook().entrySet().stream().map(k->k.getKey()+" "+k.getValue()).collect(Collectors.toList()),
+            Files.write(Paths.get(System.getProperty("user.dir") + "/Credential.txt"),
+                    credential.getBook().entrySet().stream().map( k->k.getKey() + " " + k.getValue()).collect(Collectors.toList()),
                     StandardCharsets.UTF_8);
-              Writer writer = new BufferedWriter(
-                    new OutputStreamWriter(
-                            new FileOutputStream(
-                                    new StringBuilder().append(System.getProperty("user.dir")).append("/").append(name).append(".txt").toString()),"utf-8"));
+            File f = new File(System.getProperty("user.dir") + "/" + name + ".txt");
+            f.createNewFile();
             session.setAttribute("name", name);
             response.sendRedirect("/MainServlet");
         }

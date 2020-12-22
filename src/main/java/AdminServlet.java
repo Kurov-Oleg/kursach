@@ -13,14 +13,14 @@ public class AdminServlet extends HttpServlet {
         response.setContentType("text/html");
         HttpSession session = request.getSession();
         String admin = (String) session.getAttribute("name");
-        if( admin.equals("admin")) {
+        if (admin.equals("admin")) {
             String name = request.getParameter("user");
             Credential credential = new Credential();
             credential.delete(name);
-            Files.write(Paths.get(System.getProperty("user.dir")+"/Credential.txt"),
-                    credential.getBook().entrySet().stream().map(k->k.getKey()+" "+k.getValue()).collect(Collectors.toList()),
+            Files.write(Paths.get(System.getProperty("user.dir") + "/Credential.txt"),
+                    credential.getBook().entrySet().stream().map(k->k.getKey() + " " + k.getValue()).collect(Collectors.toList()),
                     StandardCharsets.UTF_8);
-            File file = new File(System.getProperty("user.dir")+"/"+name+".txt");
+            File file = new File(System.getProperty("user.dir") + "/" + name + ".txt");
             file.delete();
         }
         response.sendRedirect("/MainServlet");

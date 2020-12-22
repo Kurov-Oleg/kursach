@@ -14,7 +14,7 @@ public class Credential {
     }
 
     public boolean isFirst() {
-        if(book.isEmpty())
+        if (book.isEmpty())
             return true;
         return false;
     }
@@ -24,13 +24,13 @@ public class Credential {
     }
 
     public boolean check(String key) {
-        if(book.containsKey(key))
+        if (book.containsKey(key))
             return true;
         return false;
     }
 
     public boolean checkPass(String key,String password) {
-        if(book.get(key).equals(password))
+        if (book.get(key).equals(password))
             return true;
         return false;
     }

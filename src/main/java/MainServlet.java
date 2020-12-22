@@ -3,19 +3,18 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 public class MainServlet extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         File f = new File("Credential.txt");
-        if( !f.exists() ) {
+        if ( !f.exists() ) {
             f.createNewFile();
         }
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         out.println("<!DOCTYPE html>");
-        out.println("<html><head><link rel=\"stylesheet\" href=\"style.css\"></head><body>");
+        out.println("<html> <head> <link rel = \"stylesheet\" href = \"style.css\"> </head> <body>");
         HttpSession session = request.getSession();
-        if( session.getAttribute("name") != null ){
-            if( session.getAttribute("name").equals("admin") ) {
+        if (session.getAttribute("name") != null){
+            if (session.getAttribute("name").equals("admin")) {
                 request.getRequestDispatcher("linksa.html").include(request, response);
             } else {
                 request.getRequestDispatcher("links.html").include(request, response);
@@ -31,7 +30,7 @@ public class MainServlet extends HttpServlet {
         out.println("<input type = \"text\" name = \"topic\" placeholder = \"topic\"> <br>");
         out.println("<input type = \"submit\"  value = \"set as done\">");
         out.println("</form> <br> <br>");
-        out.println(todo.checkIn(admin)+"</div>");
+        out.println(todo.checkIn(admin) + "</div>");
         out.println("<div id = \"done\" class = \"tabcontent\"> <h3> done </h3>" + todo.checkDone(admin) + "</div>");
         out.println("<div id = \"add\" class = \"tabcontent\">");
         out.println("<form  name = form1\"  action = \"AddServlet\" method = \"post\">");

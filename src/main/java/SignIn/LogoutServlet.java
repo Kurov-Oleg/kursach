@@ -10,10 +10,10 @@ public class LogoutServlet extends HttpServlet {
         HttpSession session = request.getSession();
         session.invalidate();
         PrintWriter out=response.getWriter();
-        out.println( "<!DOCTYPE html>" );
-        out.println( "<html><head><link rel=\"stylesheet\" href=\"style2.css\"></head><body>" );
+        out.println("<!DOCTYPE html>");
+        out.println("<html> <head> <link rel = \"stylesheet\" href = \"style2.css\"> </head><body>");
         request.getRequestDispatcher("login.html").include(request, response);
-        out.println( "</html></body>" );
+        out.println( "</html> </body>" );
         out.close();
     }
 }

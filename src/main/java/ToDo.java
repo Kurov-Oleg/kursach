@@ -11,7 +11,7 @@ public class ToDo {
     }
 
     public HashMap<String,Point> readDo(String name) throws FileNotFoundException {
-        Scanner scanner = new Scanner(new File(System.getProperty("user.dir")+"/"+name+".txt"));
+        Scanner scanner = new Scanner(new File(System.getProperty("user.dir") + "/" + name + ".txt"));
         HashMap<String,Point>list = new HashMap<String,Point>();
             while (scanner.hasNext()) {
                 String str;
@@ -37,7 +37,7 @@ public class ToDo {
     }
 
     public void addDo(String name,String finalDate,String task,String topic,String status) throws IOException {
-        Scanner scanner = new Scanner(new File(System.getProperty("user.dir")+"/"+name+".txt"));
+        Scanner scanner = new Scanner(new File(System.getProperty("user.dir") + "/" + name + ".txt"));
         HashMap<String,Point> list = readDo(name);
         Point point = new Point();
         SimpleDateFormat formatForDateNow = new SimpleDateFormat(" dd.MM.yyyy ");
@@ -47,13 +47,13 @@ public class ToDo {
         point.setDate(date);
         point.setDescription(task);
         point.setStatus(status);
-        topic=topic.trim();
+        topic = topic.trim();
         list.put(topic,point);
-        Files.write(Paths.get(System.getProperty("user.dir")+"/"+name+".txt"),
-                list.entrySet().stream().map(k->k.getKey()+"\n"+
-                        k.getValue().getDate()+"\n"+
-                        k.getValue().getFinalDate()+"\n"+
-                        k.getValue().getStatus()+"\n"+
+        Files.write(Paths.get(System.getProperty("user.dir") + "/" + name + ".txt"),
+                list.entrySet().stream().map(k->k.getKey() + "\n" +
+                        k.getValue().getDate() + "\n" +
+                        k.getValue().getFinalDate() + "\n" +
+                        k.getValue().getStatus() + "\n" +
                         k.getValue().getDescription()).collect(Collectors.toList()),
                 StandardCharsets.UTF_8);
 
@@ -63,13 +63,13 @@ public class ToDo {
     public String checkIn(String name) throws FileNotFoundException {
         HashMap<String,Point> list = readDo(name);
         StringBuilder str = new StringBuilder();
-        for(Map.Entry<String,Point> entry : list.entrySet()) {
-            if( entry.getValue().getStatus().equals("in progress")) {
-                str.append("<a>"+entry.getKey()+"</a><br>");
-                str.append("<a>"+entry.getValue().getDate()+"</a>");
-                str.append("<a>"+entry.getValue().getStatus()+"</a><br>");
-                str.append("<a>"+entry.getValue().getFinalDate()+"</a><br>");
-                str.append("<a>"+entry.getValue().getDescription()+"</a><br>");
+        for (Map.Entry<String,Point> entry : list.entrySet()) {
+            if ( entry.getValue().getStatus().equals("in progress")) {
+                str.append("<a>" + entry.getKey() + "</a><br>");
+                str.append("<a>" + entry.getValue().getDate() + "</a>");
+                str.append("<a>" + entry.getValue().getStatus() + "</a><br>");
+                str.append("<a>" + entry.getValue().getFinalDate() + "</a><br>");
+                str.append("<a>" + entry.getValue().getDescription() + "</a><br>");
                 str.append("<br>");
                 str.append("<br>");
             }
@@ -80,9 +80,9 @@ public class ToDo {
     public void setAs(String name, String topic, String status) throws IOException {
         HashMap<String,Point> list = readDo(name);
         Point point = new Point();
-        topic=topic.trim();
-        for(Map.Entry<String,Point> entry : list.entrySet()) {
-            if( entry.getKey().equals(topic)) {
+        topic = topic.trim();
+        for (Map.Entry<String,Point> entry : list.entrySet()) {
+            if ( entry.getKey().equals(topic)) {
                 point= entry.getValue();
                 point.setStatus(status);
                 break;
@@ -90,7 +90,7 @@ public class ToDo {
         }
         list.remove(topic);
         list.put(topic,point);
-        Files.write(Paths.get(System.getProperty("user.dir")+"/"+name+".txt"),
+        Files.write(Paths.get(System.getProperty("user.dir") + "/" + name + ".txt"),
                 list.entrySet().stream().map(k->k.getKey()+"\n"+
                         k.getValue().getDate()+"\n"+
                         k.getValue().getFinalDate()+"\n"+
@@ -102,13 +102,13 @@ public class ToDo {
     public String checkDone(String name) throws FileNotFoundException {
         HashMap<String,Point> list = readDo(name);
         StringBuilder str = new StringBuilder();
-        for(Map.Entry<String,Point> entry : list.entrySet()) {
-            if( entry.getValue().getStatus().equals("done")) {
-                str.append("<a>"+entry.getKey()+"</a><br>");
-                str.append("<a>"+entry.getValue().getDate()+"</a>");
-                str.append("<a>"+entry.getValue().getStatus()+"</a><br>");
-                str.append("<a>"+entry.getValue().getFinalDate()+"</a><br>");
-                str.append("<a>"+entry.getValue().getDescription()+"</a><br>");
+        for (Map.Entry<String,Point> entry : list.entrySet()) {
+            if ( entry.getValue().getStatus().equals("done")) {
+                str.append("<a>" + entry.getKey()+"</a><br>");
+                str.append("<a>" + entry.getValue().getDate() + "</a>");
+                str.append("<a>" + entry.getValue().getStatus() + "</a><br>");
+                str.append("<a>" + entry.getValue().getFinalDate() + "</a><br>");
+                str.append("<a>" + entry.getValue().getDescription() + "</a><br>");
                 str.append("<br>");
                 str.append("<br>");
             }

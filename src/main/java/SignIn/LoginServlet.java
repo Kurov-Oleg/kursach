@@ -18,8 +18,8 @@ public class LoginServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         Credential cred = new Credential();
         out.println("<!DOCTYPE html>");
-        out.println("<html><head><link rel=\"stylesheet\" href=\"style2.css\"></head><body>"+System.getProperty("user.dir"));
-        Scanner scanner = new Scanner(new File(System.getProperty("user.dir")+"/Credential.txt"));
+        out.println("<html><head><link rel = \"stylesheet\" href = \"style2.css\"></head><body>" + System.getProperty("user.dir"));
+        Scanner scanner = new Scanner(new File(System.getProperty("user.dir") + "/Credential.txt"));
         if (cred.isFirst()) {
             while (scanner.hasNext()) {
                 String line = scanner.next();
@@ -40,7 +40,7 @@ public class LoginServlet extends HttpServlet {
                 out.print("<h1>Sorry, name is wrong</h1>");
                 request.getRequestDispatcher("login.html").include(request, response);
         }
-        out.println("</body></html>");
+        out.println("</body> </html>");
         out.close();
     }
 }
