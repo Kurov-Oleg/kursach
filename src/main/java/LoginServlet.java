@@ -14,11 +14,9 @@ public class LoginServlet extends HttpServlet {
         name = name.trim();
         password = password.trim();
         PrintWriter out = response.getWriter();
-        Logi logi = new Logi();
+        Credentional logi = new Credentional();
         out.println("<!DOCTYPE html>");
         out.println("<html><head><link rel=\"stylesheet\" href=\"style2.css\"></head><body>");
-
-        boolean flag = false;
         Scanner scanner = new Scanner(new File("/home/zgymko/IdeaProjects/lab15/src/main/resources/Logi.txt"));
         if(logi.isFirst()) {
             while (scanner.hasNext()) {
@@ -41,11 +39,7 @@ public class LoginServlet extends HttpServlet {
                 out.print("<h1>Sorry, name is wrong</h1>");
                 request.getRequestDispatcher("login.html").include(request, response);
             }
-
-
-
         out.println("</body></html>");
         out.close();
-
     }
 }

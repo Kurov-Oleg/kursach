@@ -15,11 +15,8 @@ public class Desk {
         str.append(" ");
         str.append(formatForDateNow.format(dateNow));
         String val = str.toString();
-
-            book.put(val,number);
+        book.put(val,number);
         }
-
-
 
     public synchronized String getDesk() {
         StringBuilder str = new StringBuilder();

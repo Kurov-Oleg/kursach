@@ -1,6 +1,6 @@
 public class Point {
     private String date;
-    private String final_date;
+    private String finalDate;
     private String description;
     private String status;
     public Point() {}
@@ -13,13 +13,9 @@ public class Point {
         this.description = description;
     }
 
-    public void setFinal_date(String final_date) {
-        this.final_date = final_date;
+    public void setFinalDate(String finalDate) {
+        this.finalDate = finalDate;
     }
-
-   /* public void setTopic(String topic) {
-        this.topic = topic;
-    }*/
 
     public String getDate() {
         return date;
@@ -33,12 +29,10 @@ public class Point {
         return description;
     }
 
-    public String getFinal_date() {
-        return final_date;
+    public String getFinalDate() {
+        return finalDate;
     }
-   /* public String getTopic() {
-        return topic;
-    }*/
+
     public String getStatus() {
         return status;
     }

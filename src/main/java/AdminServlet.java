@@ -10,13 +10,11 @@ public class AdminServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
-
         HttpSession session = request.getSession();
         String admin = (String) session.getAttribute("name");
         if( admin.equals("admin")) {
             String name = request.getParameter("user");
-            Logi logi = new Logi();
+            Credentional logi = new Credentional();
             logi.delete(name);
             Files.write(Paths.get("/home/zgymko/IdeaProjects/lab15/src/main/resources/Logi.txt"),
                     logi.getBook().entrySet().stream().map(k->k.getKey()+" "+k.getValue()).collect(Collectors.toList()),
@@ -26,6 +24,4 @@ public class AdminServlet extends HttpServlet {
         }
         response.sendRedirect("/MainServlet");
     }
-
-
 }

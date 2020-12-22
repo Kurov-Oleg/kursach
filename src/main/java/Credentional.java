@@ -1,11 +1,11 @@
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class Logi {
+public class Credentional {
     private static HashMap<String,String> book = new HashMap<String,String>();
     private static boolean first;
 
-    public Logi() {
+    public Credentional() {
     }
 
     public synchronized void add(String name,String pass) {
