@@ -1,11 +1,13 @@
+package SignIn;
+
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class Credentional {
+public class Credential {
     private static HashMap<String,String> book = new HashMap<String,String>();
     private static boolean first;
 
-    public Credentional() {
+    public Credential() {
     }
 
     public synchronized void add(String name,String pass) {

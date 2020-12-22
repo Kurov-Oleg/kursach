@@ -1,3 +1,7 @@
+package SignIn;
+
+import SignIn.Credential;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -6,9 +10,7 @@ import javax.servlet.http.HttpSession;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.sql.BatchUpdateException;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
@@ -21,7 +23,7 @@ public class RegistryServlet extends HttpServlet {
         name = name.trim();
         password = password.trim();
         PrintWriter out = response.getWriter();
-        Credentional logi = new Credentional();
+        Credential logi = new Credential();
         out.println("<!DOCTYPE html>");
         out.println("<html><head><link rel=\"stylesheet\" href=\"style2.css\"></head><body>");
         Scanner scanner = new Scanner(new File("/home/zgymko/IdeaProjects/lab15/src/main/resources/Logi.txt"));

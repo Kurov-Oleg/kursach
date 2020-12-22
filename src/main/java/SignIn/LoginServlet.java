@@ -1,5 +1,8 @@
+package SignIn;
+
+import SignIn.Credential;
+
 import java.io.*;
-import java.util.HashMap;
 import java.util.Scanner;
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -14,7 +17,7 @@ public class LoginServlet extends HttpServlet {
         name = name.trim();
         password = password.trim();
         PrintWriter out = response.getWriter();
-        Credentional logi = new Credentional();
+        Credential logi = new Credential();
         out.println("<!DOCTYPE html>");
         out.println("<html><head><link rel=\"stylesheet\" href=\"style2.css\"></head><body>");
         Scanner scanner = new Scanner(new File("/home/zgymko/IdeaProjects/lab15/src/main/resources/Logi.txt"));

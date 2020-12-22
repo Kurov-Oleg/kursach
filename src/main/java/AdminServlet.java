@@ -1,3 +1,5 @@
+import SignIn.Credential;
+
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -14,7 +16,7 @@ public class AdminServlet extends HttpServlet {
         String admin = (String) session.getAttribute("name");
         if( admin.equals("admin")) {
             String name = request.getParameter("user");
-            Credentional logi = new Credentional();
+            Credential logi = new Credential();
             logi.delete(name);
             Files.write(Paths.get("/home/zgymko/IdeaProjects/lab15/src/main/resources/Logi.txt"),
                     logi.getBook().entrySet().stream().map(k->k.getKey()+" "+k.getValue()).collect(Collectors.toList()),
