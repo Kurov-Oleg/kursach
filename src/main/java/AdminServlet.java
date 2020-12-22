@@ -18,10 +18,10 @@ public class AdminServlet extends HttpServlet {
             String name = request.getParameter("user");
             Credential logi = new Credential();
             logi.delete(name);
-            Files.write(Paths.get("/home/zgymko/IdeaProjects/lab15/src/main/resources/Logi.txt"),
+            Files.write(Paths.get(System.getProperty("user.dir")+"/Credential.txt"),
                     logi.getBook().entrySet().stream().map(k->k.getKey()+" "+k.getValue()).collect(Collectors.toList()),
                     StandardCharsets.UTF_8);
-            File file = new File("/home/zgymko/IdeaProjects/lab15/src/main/resources/"+name+".txt");
+            File file = new File(System.getProperty("user.dir")+name+".txt");
             file.delete();
         }
         response.sendRedirect("/MainServlet");
