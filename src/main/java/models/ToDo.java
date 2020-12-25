@@ -16,7 +16,6 @@ public class ToDo {
 
     public HashMap<String, Point> readDo(String name) throws FileNotFoundException {
         File f = new File(name + ".txt");
-        if(f.exists()) {
             Scanner scanner = new Scanner(new File(System.getProperty("user.dir") + "/" + name + ".txt"));
             HashMap<String, Point> list = new HashMap<String, Point>();
             while (scanner.hasNext()) {
@@ -35,16 +34,17 @@ public class ToDo {
                 point.setStatus(b);
                 str = scanner.nextLine();
                 b = str.trim();
+                point.setTag(b);
+                str = scanner.nextLine();
+                b = str.trim();
                 point.setDescription(b);
                 list.put(topic, point);
             }
 
             return list;
-        }
-        return null;
     }
 
-    public void addDo(String name,String finalDate,String task,String topic,String status) throws IOException {
+    public void addDo(String name,String finalDate,String task,String topic,String status, String tag) throws IOException {
         HashMap<String,Point> list = readDo(name);
         Point point = new Point();
         SimpleDateFormat formatForDateNow = new SimpleDateFormat("dd.MM.yyyy");
@@ -54,6 +54,7 @@ public class ToDo {
         point.setDate(date);
         point.setDescription(task);
         point.setStatus(status);
+        point.setTag(tag);
         topic = topic.trim();
         list.put(topic,point);
         Files.write(Paths.get(System.getProperty("user.dir") + "/" + name + ".txt"),
@@ -61,24 +62,53 @@ public class ToDo {
                         k.getValue().getDate() + "\n" +
                         k.getValue().getFinalDate() + "\n" +
                         k.getValue().getStatus() + "\n" +
+                        k.getValue().getTag()+"\n"+
                         k.getValue().getDescription()).collect(Collectors.toList()),
                 StandardCharsets.UTF_8);
     }
 
     public String checkIn(String name) throws FileNotFoundException {
         HashMap<String,Point> list = readDo(name);
+        HashMap<String, Integer> tags = new HashMap<String, Integer>();
         StringBuilder str = new StringBuilder();
+        Integer i = 0;
         for (Map.Entry<String,Point> entry : list.entrySet()) {
-            if ( entry.getValue().getStatus().equals("in progress")) {
-                str.append("<a>" + entry.getKey() + "</a><br>");
-                str.append("<a>" + entry.getValue().getDate() + "</a>");
-                str.append("<a>" + entry.getValue().getStatus() + "</a><br>");
-                str.append("<a>" + entry.getValue().getFinalDate() + "</a><br>");
-                str.append("<a>" + entry.getValue().getDescription() + "</a><br>");
-                str.append("<br>");
-                str.append("<br>");
-            }
+            tags.put(entry.getValue().getTag(), i);
+            i++;
         }
+        str.append("<div class=\"tab14\">\n");
+        for (Map.Entry<String,Integer> entry : tags.entrySet()) {
+            str.append("<button class=\"tablinks\" id=\"button1"+entry.getValue()+"\" onclick=\"open()\">"+entry.getKey()+"</button>\n");
+            str.append("<script > button1"+entry.getValue()+".onclick=function() {" +
+                        "document.getElementById(\""+entry.getKey()+"\").style.display = \"block\";");
+            for (Map.Entry<String,Integer> entry2 : tags.entrySet()) {
+                if(!(entry.getKey().equals(entry2.getKey()))) {
+                    str.append("document.getElementById(\""+entry2.getKey()+"\").style.display = \"none\";");
+                }
+            }
+            str.append("};</script>");
+        }
+        str.append("</div>");
+        str.append("\n");
+        str.append("\n");
+        for(Map.Entry<String,Integer> entry : tags.entrySet()){
+            str.append("<div id=\""+entry.getKey()+"\" class=\"tabcontent\"> <h3>"+entry.getKey()+"</h3>");
+            for (Map.Entry<String,Point> entry17 : list.entrySet()) {
+                if ( entry17.getValue().getStatus().equals("in progress")) {
+                    if (entry17.getValue().getTag().equals(entry.getKey())) {
+                        str.append("<a>" + entry17.getKey() + "</a><br>");
+                        str.append("<a>" + entry17.getValue().getDate() + "</a>");
+                        str.append("<a>" + entry17.getValue().getStatus() + "</a><br>");
+                        str.append("<a>" + entry17.getValue().getFinalDate() + "</a><br>");
+                        str.append("<a>" + entry17.getValue().getDescription() + "</a><br>");
+                        str.append("<br>");
+                        str.append("<br>");
+                    }
+                }
+            }
+            str.append("</div>");
+        }
+
         return str.toString();
     }
 
@@ -93,7 +123,6 @@ public class ToDo {
                 break;
             }
         }
-        list.remove(topic);
         list.put(topic,point);
         Files.write(Paths.get(System.getProperty("user.dir") + "/" + name + ".txt"),
                 list.entrySet().stream().map(k->k.getKey()+"\n"+

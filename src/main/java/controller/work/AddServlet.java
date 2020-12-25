@@ -13,7 +13,8 @@ public class AddServlet extends HttpServlet {
         String finalDate = request.getParameter("final_date");
         String task = request.getParameter("task");
         String topic = request.getParameter("topic");
-        book.addDo(admin, finalDate, task, topic, "in progress");
+        String tag = request.getParameter("tag");
+        book.addDo(admin, finalDate, task, topic, "in progress",tag);
         response.sendRedirect("/MainServlet");
     }
 }

@@ -50,7 +50,7 @@ class ToDoTest {
         ToDo todo = new ToDo();
         File f = new File("test1.txt");
         f.createNewFile();
-        todo.addDo("test1","40.512.3463","need to do","topic17","in progress");
+        todo.addDo("test1","40.512.3463","need to do","topic17","in progress","a");
         HashMap<String,Point> map = new HashMap<>();
         Point point = new Point();
         point.setStatus("in progress");
@@ -76,7 +76,7 @@ class ToDoTest {
         ToDo todo = new ToDo();
         File f = new File("test3.txt");
         f.createNewFile();
-        todo.addDo("test3","40.512.3463","need to do","topic17","in progress");
+        todo.addDo("test3","40.512.3463","need to do","topic17","in progress","a");
         HashMap<String,Point> map = new HashMap<>();
         Point point = new Point();
         point.setStatus("in progress");
@@ -104,7 +104,7 @@ class ToDoTest {
         ToDo todo = new ToDo();
         File f = new File("test2.txt");
         f.createNewFile();
-        todo.addDo("test2","40.512.3463","need to do","topic17","in progress");
+        todo.addDo("test2","40.512.3463","need to do","topic17","in progress","a");
         todo.setAs("test2","topic17","done");
         HashMap<String,Point> map = new HashMap<>();
         Point point = new Point();
@@ -132,7 +132,7 @@ class ToDoTest {
         ToDo todo = new ToDo();
         File f = new File("test4.txt");
         f.createNewFile();
-        todo.addDo("test4","40.512.3463","need to do","topic17","done");
+        todo.addDo("test4","40.512.3463","need to do","topic17","done","a");
         HashMap<String,Point> map = new HashMap<>();
         Point point = new Point();
         point.setStatus("done");
