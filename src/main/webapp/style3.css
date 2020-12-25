@@ -6,29 +6,11 @@ body{
     text-decoration:none;
 }
 a{
-    border: 0;
-    background-color:#000117;
-    display:inline-block;
-    margin-bottom:100px;
-    margin:20px auto;
-    text-align:center;
-    border: 2px solid #2ecc71;
-    padding:14px 40px;
-    width:150px;
-    outline:none;
-    color:white;
-    border-radius:24px;
-    transition:0.25s;
-    cursor:pointer;
-    text-decoration: none;
+    text-decoration:none;
+    font-size:50pt;
+    padding:20px;
+    color: white;
 }
-
-a:hover{
-    background: #2ecc71;
-}
-
-
-
 h1{
     font-size:50pt;
     text-align: center;
@@ -44,13 +26,12 @@ h1{
     transform: translate(-50%,-50%);
     background: #000117;
     text-align:center;
-    border-radius:50px 50px 0px 0px;
+    border-radius:50px;
 }
 
 
 
 .box2{
-    margin-top:300px;
     width:300px;
     padding:40px;
     position:absolute;
@@ -59,27 +40,9 @@ h1{
     transform: translate(-50%,-50%);
     background: #000117;
     text-align:center;
-    border-radius:0px 0px 50px 50px;
+    border-radius:50px;
 }
 
-.box2 input[type="submit"] {
-    border: 0;
-    background:none;
-    display:block;
-    margin:20px auto;
-    text-align:center;
-    border: 2px solid #2ecc71;
-    padding:14px 40px;
-    width:150px;
-    outline:none;
-    color:white;
-    border-radius:24px;
-    transition:0.25s;
-    cursor:pointer;
-}
-.box2 input[type="submit"]:hover{
-    background: #2ecc71;
-}
 
 .box input[type="text"],.box input[type="password"]{
     border:0;
@@ -145,7 +108,7 @@ h1{
 
 
 
-.box3 input[type="text"],.box3 input[type="password"]{
+.box3 input[type="text"],.box input[type="password"]{
     border:0;
     background:none;
     display:block;
@@ -188,9 +151,7 @@ h1{
 .box input[type="submit"]:hover{
     background: #2ecc71;
 }
-.tab button:active{
-    background: #2ecc71;
-}
+
 
 
 
@@ -231,45 +192,37 @@ h1{
 
 
 .tab {
-    margin-top:50px;
-    color: white;
-
+    margin-top:200px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
 }
 
 /* Style the buttons inside the tab */
 .tab button {
-    border: 0;
-    background-color:#000117;
-    display:inline-block;
-    text-align:center;
-    border: 2px solid #2ecc71;
-    padding:14px 40px;
-    width:200px;
-    outline:none;
-    color:white;
-    border-radius:24px;
-    transition:0.25s;
-    cursor:pointer;
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
 }
 .tabcontent {
     display: none;
     padding: 6px 12px;
-    position:center;
-}
-.tabcontent1 {
-    display: none;
-    margin-top:100px;
-    position:center;
-    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
 }
 /* Change background color of buttons on hover */
 .tab button:hover {
-    background-color: #2ecc71;
+    background-color: #ddd;
 }
 
 /* Create an active/current tablink class */
-.tab button:active {
-    background-color: #2ecc71;
+.tab button.active {
+    background-color: #ccc;
 }
 
 
@@ -303,8 +256,7 @@ p{
     width:300px;
     padding:40px;
     position:static;
-    margin-left: 250pt;
-    margin-top:50px;
+    margin-left: 375pt;
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
@@ -312,65 +264,4 @@ p{
     text-align:center;
     border-radius:50px;
     color:#2ecc71;
-}
-
-
-
-
-
-.done input[type="text"]:focus{
-    width: 280px;
-    border-color: #2ecc71;
-}
-.done input[type="submit"] {
-    border: 0;
-    background:none;
-    display:block;
-    margin:20px auto;
-    text-align:center;
-    border: 2px solid #2ecc71;
-    padding:14px 40px;
-    width:200px;
-    outline:none;
-    color:white;
-    border-radius:24px;
-    transition:0.25s;
-    cursor:pointer;
-}
-.done input[type="submit"]:hover{
-    background: #2ecc71;
-}
-
-.done{
-    width:300px;
-    padding:40px;
-    margin-left:250px;
-    margin-top:150px;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    background: #000117;
-    text-align:center;
-    border-radius:50px;
-}
-
-.done input[type="text"]{
-    border:0;
-    background:none;
-    display:block;
-    margin:20px auto;
-    border: 2px solid #3498db;
-    padding:14px 10px;
-    width:200px;
-    outline:none;
-    color:white;
-    border-radius:24px;
-    transition:0.25s;
-}
-.done h1{
-    color:white;
-    text-transform:uppercase;
-    font-weight:500;
-    margin-bottom:0pt;
-
 }

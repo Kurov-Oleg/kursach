@@ -5,6 +5,7 @@
     <button class="tablinks" id="button1" onclick="open()">in progress</button>
     <button class="tablinks" id="button2" onclick="open()">done</button>
     <button class="tablinks" id="button3" onclick="open()">add</button>
+    <button class="tablinks" id="button4" onclick="open()">close all</button>
 </div>
 
 
@@ -26,5 +27,10 @@
         document.getElementById("in progress").style.display = "none";
         document.getElementById("done").style.display = "none";
         document.getElementById("add").style.display = "block";
+    };
+    button4.onclick=function() {
+        document.getElementById("in progress").style.display = "none";
+        document.getElementById("done").style.display = "none";
+        document.getElementById("add").style.display = "none";
     };
     </script>

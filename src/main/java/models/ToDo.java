@@ -76,7 +76,7 @@ public class ToDo {
             tags.put(entry.getValue().getTag(), i);
             i++;
         }
-        str.append("<div class=\"tab14\">\n");
+        str.append("<div class=\"tab\">\n");
         for (Map.Entry<String,Integer> entry : tags.entrySet()) {
             str.append("<button class=\"tablinks\" id=\"button1"+entry.getValue()+"\" onclick=\"open()\">"+entry.getKey()+"</button>\n");
             str.append("<script > button1"+entry.getValue()+".onclick=function() {" +
@@ -92,15 +92,15 @@ public class ToDo {
         str.append("\n");
         str.append("\n");
         for(Map.Entry<String,Integer> entry : tags.entrySet()){
-            str.append("<div id=\""+entry.getKey()+"\" class=\"tabcontent\"> <h3>"+entry.getKey()+"</h3>");
+            str.append("<div id=\""+entry.getKey()+"\" class=\"tabcontent1\">");
             for (Map.Entry<String,Point> entry17 : list.entrySet()) {
                 if ( entry17.getValue().getStatus().equals("in progress")) {
                     if (entry17.getValue().getTag().equals(entry.getKey())) {
-                        str.append("<a>" + entry17.getKey() + "</a><br>");
-                        str.append("<a>" + entry17.getValue().getDate() + "</a>");
-                        str.append("<a>" + entry17.getValue().getStatus() + "</a><br>");
-                        str.append("<a>" + entry17.getValue().getFinalDate() + "</a><br>");
-                        str.append("<a>" + entry17.getValue().getDescription() + "</a><br>");
+                        str.append("<p>" + entry17.getKey() + "<br>");
+                        str.append(entry17.getValue().getDate() +"<br>");
+                        str.append(entry17.getValue().getStatus() +"<br>");
+                        str.append(entry17.getValue().getFinalDate() +"<br>");
+                        str.append(entry17.getValue().getDescription() + "</p><br>");
                         str.append("<br>");
                         str.append("<br>");
                     }
@@ -138,11 +138,11 @@ public class ToDo {
         StringBuilder str = new StringBuilder();
         for (Map.Entry<String,Point> entry : list.entrySet()) {
             if ( entry.getValue().getStatus().equals("done")) {
-                str.append("<a>" + entry.getKey()+"</a><br>");
-                str.append("<a>" + entry.getValue().getDate() + "</a>");
-                str.append("<a>" + entry.getValue().getStatus() + "</a><br>");
-                str.append("<a>" + entry.getValue().getFinalDate() + "</a><br>");
-                str.append("<a>" + entry.getValue().getDescription() + "</a><br>");
+                str.append("<p>" + entry.getKey() + "<br>");
+                str.append(entry.getValue().getDate() +"<br>");
+                str.append(entry.getValue().getStatus() +"<br>");
+                str.append(entry.getValue().getFinalDate() +"<br>");
+                str.append(entry.getValue().getDescription() + "</p><br>");
                 str.append("<br>");
                 str.append("<br>");
             }

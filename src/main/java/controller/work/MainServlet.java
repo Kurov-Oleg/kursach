@@ -29,15 +29,15 @@ public class MainServlet extends HttpServlet {
         }
         String admin = (String) session.getAttribute("name");
         ToDo todo = new ToDo();
-        out.println("<div id=\"in progress\" class=\"tabcontent\"> <h3>in progress</h3>");
-        out.println(" <form name = \"form27\" action=\"DoneServlet\" method =\"post\">");
+        out.println("<div id=\"in progress\" class=\"tabcontent\">");
+        out.println(" <form class = \"done\"name = \"form17\" action=\"DoneServlet\" method =\"post\">");
         out.println("<input type = \"text\" name=\"topic\" placeholder=\"topic\"> <br>");
         out.println("<input type = \"submit\"  value = \"set as done\">");
         out.println("</form> <br> <br>");
         out.println(todo.checkIn(admin) + "</div>");
-        out.println("<div id = \"done\" class = \"tabcontent\"> <h3> done </h3>" + todo.checkDone(admin) + "</div>");
+        out.println("<div id = \"done\" class = \"tabcontent\">" + todo.checkDone(admin) + "</div>");
         out.println("<div id = \"add\" class = \"tabcontent\">");
-        out.println("<form  name = \"form1\"  action = \"AddServlet\" method = \"post\">");
+        out.println("<form  class = \"news\" name = \"form1\"  action = \"AddServlet\" method = \"post\">");
         out.println("<input type = \"text\" name=\"topic\" placeholder=\"topic\"><br>");
         out.println("<input type = \"text\" name=\"final_date\" placeholder=\"final_date\"> <br>");
         out.println("<input type = \"text\" name=\"tag\" placeholder=\"tag\"> <br>");
